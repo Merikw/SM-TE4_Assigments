@@ -1,5 +1,7 @@
 package com.westerveld.merik.sm_te4_assigments;
 
+import android.graphics.Bitmap;
+
 import java.util.Date;
 
 /**
@@ -18,6 +20,7 @@ public class Movie {
     private String plot;
     private double rating;
     private String picURL;
+    private Bitmap img;
 
     public Movie(){
 
@@ -33,6 +36,12 @@ public class Movie {
         this.writer = writer;
         this.plot = plot;
         this.rating = rating;
+        this.picURL = picURL;
+    }
+
+    public Movie(String title, int year, String picURL){
+        this.title = title;
+        this.year = year;
         this.picURL = picURL;
     }
 
@@ -110,5 +119,13 @@ public class Movie {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public void setImg(Bitmap img){
+        this.img = img;
+    }
+
+    public Bitmap getImg(){
+        return this.img;
     }
 }

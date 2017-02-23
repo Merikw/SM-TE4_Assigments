@@ -1,18 +1,24 @@
 package com.westerveld.merik.sm_te4_assigments;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,9 +29,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class HomeActivity extends AppCompatActivity{
+public class HomeActivity extends AppCompatActivity {
 
     private String jsonText = "";
 
@@ -46,7 +53,7 @@ public class HomeActivity extends AppCompatActivity{
         });
 
         Button btnSearch = (Button) findViewById(R.id.btnSearch);
-        btnSearch.setOnClickListener(new View.OnClickListener(){
+        btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 searchMovie();
@@ -76,21 +83,36 @@ public class HomeActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public void searchMovie(){
+    public void searchMovie() {
         System.out.println("Test");
         TextView txtTitle = (TextView) findViewById(R.id.txtTitle);
         JSONclass json = new JSONclass(txtTitle);
         EditText txtSearch = (EditText) findViewById(R.id.txtSearch);
         try {
-            jsonText = json.execute("https://api.themoviedb.org/3/search/movie?api_key=6f4b1af5610cf0cf87fbaf18631e5823&language=en-US&query="+txtSearch.getText()+"&page=1&include_adult=false").get();
+            String s = "http://www.omdbapi.com/?s=" + txtSearch.getText();
+            s = s.replaceAll("\\s+", "%20");
+            System.out.println("Link:  " + s);
+            jsonText = json.execute(s).get();
             JSONObject jsonObject = new JSONObject(jsonText);
-            Movie movie = new Movie((String)jsonObject.get("Title"), Integer.parseInt((String)jsonObject.get("Year")), (String)jsonObject.get("Rated"),
-                    (String)jsonObject.get("Runtime"), (String)jsonObject.get("Genre"), (String)jsonObject.get("Director"),
-                    (String)jsonObject.get("Writer"), (String)jsonObject.get("Plot"), Double.parseDouble((String)jsonObject.get("imdbRating")),
-                    (String)jsonObject.get("Poster"));
-            txtTitle.setText(movie.getTitle());
-            ImageView imgView = (ImageView) findViewById(R.id.imgView);
-            new DownloadImageTask(imgView).execute(movie.getPicURL());
+            JSONArray jsonArray = jsonObject.getJSONArray("Search");
+            ArrayList<Movie> movieList = new ArrayList<>();
+            HorizontalScrollView hsv = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
+            LinearLayout hsvLL = (LinearLayout) findViewById(R.id.hsvLinearLayout);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                System.out.println(i);
+                JSONObject movie = jsonArray.getJSONObject(i);
+                System.out.println(jsonArray.getJSONObject(i));
+                Movie movieObj = new Movie(movie.getString("Title"), movie.getInt("Year"), movie.getString("Poster"));
+                movieList.add(movieObj);
+                System.out.println(movieObj.getTitle());
+
+                ImageView image = new ImageView(this);
+                image.setPadding(25,25,25,25);
+                new DownloadImageTask(image).execute(movieObj.getPicURL());
+                hsvLL.addView(image, i);
+            }
+//            txtTitle.setText(movieList.get(0).getTitle());
+//            ImageView imgView = (ImageView) findViewById(R.id.imgView);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
