@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">SM-TE4_Practicum</string>
+    <string name="image_view_of_the_criminal">Image view of the criminal.</string>
+    <string name="Name_Of_Criminal">Name</string>
+    <string name="Age_Of_Criminal">Age</string>
+    <string name="Bounty_Of_Criminal">Bounty</string>
+    <string name="Gender_Of_Criminal">Gender</string>
+    <string name="Details">Details</string>
+    <string name="Report">Report</string>
+    <string name="Details_Text">Ik ben in de buurt, ik moet hosselen
+Politie wil me pakken, speel verstoppertje
+Bitches willen plakken, maar we fokken ze
+Ja we fokken ze, ik geef geen fok om ze
+Ik ben in de buurt, ik moet hosselen
+Politie wil me pakken, speel verstoppertje
+Bitches willen plakken, maar we fokken ze
+Ja we fokken ze, ik geef geen fok om ze
+</string>
+    <string name="Take_Picture">Take Picture</string>
+    <string name="GPS">GPS position</string>
+    <string name="Call_113">Call 113</string>
+    <string name="Back">Back</string>
+    <string name="Send_Report">Send report</string>
 </resources>
