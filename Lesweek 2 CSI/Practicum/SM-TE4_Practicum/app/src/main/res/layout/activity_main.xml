@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.westerveld.merik.sm_te4_practicum.MainActivity"
+    android:weightSum="1"
+    android:orientation="vertical"
+    android:background="@android:color/black">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        app:srcCompat="@drawable/boef"
+        android:id="@+id/imageView"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:contentDescription ="@string/image_view_of_the_criminal"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="@color/TableRow_Color">
+
+                <TextView
+                    android:id="@+id/txtName"
+                    style="@style/TextCSI.Table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/Name_Of_Criminal" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:ems="10"
+                    style="@style/TextCSI.Table"
+                    android:inputType="textPersonName" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="@color/TableRow_Color">
+
+                <TextView
+                    android:id="@+id/txtGender"
+                    style="@style/TextCSI.Table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/Gender_Of_Criminal" />
+
+                <EditText
+                    android:id="@+id/etGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    style="@style/TextCSI.Table" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="@color/TableRow_Color">
+
+                <TextView
+                    android:id="@+id/txtAge"
+                    style="@style/TextCSI.Table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/Age_Of_Criminal" />
+
+                <EditText
+                    android:id="@+id/etAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    style="@style/TextCSI.Table" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="@color/TableRow_Color">
+
+                <TextView
+                    android:id="@+id/txtBounty"
+                    style="@style/TextCSI.Table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/Bounty_Of_Criminal" />
+
+                <EditText
+                    android:id="@+id/etBounty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    style="@style/TextCSI.Table" />
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtDetails"
+                style="@style/TextCSI"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:gravity="center_horizontal"
+                android:text="@string/Details">
+
+            </TextView>
+
+            <ScrollView
+                android:id="@+id/svDetails"
+                android:layout_width="match_parent"
+                android:layout_height="76dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtDetailText"
+                        style="@style/TextCSI.small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Details_Text"></TextView>
+                </LinearLayout>
+
+            </ScrollView>
+
+            <Button
+                android:id="@+id/btnReport"
+                style="@style/ButtonCSI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/Report" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

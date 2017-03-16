@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#000000</color>
+    <color name="GreenTextColor">#0bb438</color>
+    <color name="TetColor_Table">#000000</color>
+    <color name="TableRow_Color">#f08800</color>
+    <color name="button_color_text">#000000</color>
+    <color name="button_color_bg">#f08800</color>
+    <color name="WhiteColor">#ffffff</color>
+</resources>
